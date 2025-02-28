@@ -1,0 +1,33 @@
+{
+  "properties": [
+    {
+      "name": "ollama.cors.allowed-origins",
+      "type": "java.lang.String",
+      "description": "Description for ollama.cors.allowed-origins."
+    },
+    {
+      "name": "ollama.cors.allowed-methods",
+      "type": "java.lang.String",
+      "description": "Description for ollama.cors.allowed-methods."
+    },
+    {
+      "name": "ollama.cors.allowed-headers",
+      "type": "java.lang.String",
+      "description": "Description for ollama.cors.allowed-headers."
+    },
+    {
+      "name": "ollama.cors.exposed-headers",
+      "type": "java.lang.String",
+      "description": "Description for ollama.cors.exposed-headers."
+    },
+    {
+      "name": "ollama.cors.allow-credentials",
+      "type": "java.lang.String",
+      "description": "Description for ollama.cors.allow-credentials."
+    },
+    {
+      "name": "ollama.cors.max-age",
+      "type": "java.lang.String",
+      "description": "Description for ollama.cors.max-age."
+    }
+  ] }

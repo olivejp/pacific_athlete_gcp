@@ -1,0 +1,51 @@
+spring:
+  cloud:
+    gcp:
+      project-id: fitness-449702
+  ai:
+    openai:
+      api-key: ${OPEN_API_KEY}
+  application:
+    name: ollama_instance
+  jpa:
+    open-in-view: false
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #Permet d'utiliser des $ dans le nom des colonnes.
+    database: postgresql
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres?autoReconnect=true # ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}}
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      poolName: Hikari
+      auto-commit: true
+      connection-timeout: 600000
+      maximum-pool-size: 15
+      max-lifetime: 1800000
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui.path: /swagger-ui.html
+ollama:
+  cors:
+    allowed-origins:
+      - 'http://localhost:4200'
+      - 'https://ff-debug-service-frontend-pro-ygxkweukma-uc.a.run.app'
+      - 'https://fitness-7xtmfo-qualification.flutterflow.app'
+      - 'http://fitness-449702.ts.r.appspot.com'
+    allowed-methods:
+      - '*'
+    allowed-headers:
+      - '*'
+    exposed-headers:
+      - 'Authorization'
+      - 'X-Total-Count'
+      - 'Link'
+      - 'ETag'
+    allow-credentials: true
+    max-age: 1800

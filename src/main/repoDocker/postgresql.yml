@@ -1,0 +1,17 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+version: '3.8'
+name: postgresql
+services:
+  ollama-postgresql:
+    container_name: ollama_postgresql
+    image: postgres:17.2
+    # volumes:
+    #   - ~/volumes/pst/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=ollama
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 5432:5432
