@@ -1,8 +1,11 @@
 package nc.deveo.pacific_athlete.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Setter
@@ -10,22 +13,30 @@ import lombok.Setter;
 @Table(name = "workout_set")
 public class WorkoutSet extends AbstractDomain {
 
-    @Column(name = "workout_id")
-    private Long workoutId;
 
-    @Column(name = "mouvement_id")
-    private Long exerciceId;
+    @Column(name = "commentaire", length = Integer.MAX_VALUE)
+    private String commentaire;
+
+    @Column(name = "\"order\"")
+    private Long order;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "workout_id", nullable = false)
+    private Workout workout;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "exercice_id", referencedColumnName = "id", updatable = false, insertable = false),
-    })
+    @JoinColumn(name = "exercice_id")
     private Exercice exercice;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "workout_id", referencedColumnName = "id", updatable = false, insertable = false),
-    })
-    private Workout workout;
+    @Column(name = "uid", length = Integer.MAX_VALUE)
+    private String uid;
+
+    @Column(name = "exercice_uid", length = Integer.MAX_VALUE)
+    private String exerciceUid;
+
+    @Column(name = "workout_uid", length = Integer.MAX_VALUE)
+    private String workoutUid;
 
 }

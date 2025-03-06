@@ -1,6 +1,6 @@
 package nc.deveo.pacific_athlete.domain;
 
-public enum TypeMouvement {
+public enum TypeExercice {
     TIME,
     DIST,
     REPS_WEIGHT,

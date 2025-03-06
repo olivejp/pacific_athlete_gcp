@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class OllamaController {
+public class AiController {
 
     private final ChatClient chatClient;
 
-    public OllamaController(ChatClient.Builder chatClientBuilder) {
+    public AiController(ChatClient.Builder chatClientBuilder) {
         this.chatClient = chatClientBuilder.build();
     }
 
     @PostMapping("/generate")
-    public String generateOllama(@RequestParam(name = "prompt") String prompt) {
+    public String askAi(@RequestParam(name = "prompt") String prompt) {
         final PromptTemplate promptTemplate = new PromptTemplate("All you answer will be in JSON format and nothing more." +
                 "Try to use the functions included with this request in priority." +
                 "If you use one of the functions then return directly the result of the function without any changes." +
@@ -29,7 +29,7 @@ public class OllamaController {
         final String question = promptTemplate.render();
         return this.chatClient.prompt()
                 .user(question)
-                .functions("createExercice", "createMouvement", "getListMouvement")
+                .functions("createWorkout", "createExercice", "getListExercice")
                 .call()
                 .content();
     }

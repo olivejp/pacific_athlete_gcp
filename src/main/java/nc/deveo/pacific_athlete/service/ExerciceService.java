@@ -3,7 +3,7 @@ package nc.deveo.pacific_athlete.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import nc.deveo.pacific_athlete.domain.Exercice;
-import nc.deveo.pacific_athlete.domain.TypeMouvement;
+import nc.deveo.pacific_athlete.domain.TypeExercice;
 import nc.deveo.pacific_athlete.mapper.ExerciceMapper;
 import nc.deveo.pacific_athlete.repository.ExerciceRepository;
 import nc.deveo.pacific_athlete.service.dto.ExerciceDto;
@@ -27,7 +27,7 @@ public class ExerciceService {
     }
 
     @Transactional
-    public ExerciceDto createExercice(String seanceNom, String description, TypeMouvement type) {
+    public ExerciceDto createExercice(String seanceNom, String description, TypeExercice type) {
         log.info("createMouvement: {} {} {}", seanceNom, type, description);
         final Long utilisateurId = 2L; // TODO remplacer cette assignation par une recherche dans un repository.
         final Exercice exercice = new Exercice();

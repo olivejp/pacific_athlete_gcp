@@ -10,6 +10,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EntityScan(DatabaseConfiguration.DOMAIN_PATH)
 @EnableJpaRepositories(basePackages = DatabaseConfiguration.REPOSITORY_PATH)
 public class DatabaseConfiguration {
-    public static final String DOMAIN_PATH = "nc.deveo.ollama.domain";
-    public static final String REPOSITORY_PATH = "nc.deveo.ollama.repository";
+    public static final String DOMAIN_PATH = "nc.deveo.pacific_athlete.domain";
+    public static final String REPOSITORY_PATH = "nc.deveo.pacific_athlete.repository";
 }

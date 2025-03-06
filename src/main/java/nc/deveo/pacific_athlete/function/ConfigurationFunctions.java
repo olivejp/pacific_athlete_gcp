@@ -2,12 +2,12 @@ package nc.deveo.pacific_athlete.function;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import nc.deveo.pacific_athlete.function.implementation.CreateWorkoutFunctionImpl;
 import nc.deveo.pacific_athlete.function.implementation.CreateExerciceFunctionImpl;
-import nc.deveo.pacific_athlete.function.implementation.CreateMouvementFunctionImpl;
-import nc.deveo.pacific_athlete.function.implementation.GetListMouvementFunctionImpl;
+import nc.deveo.pacific_athlete.function.implementation.GetListExerciceFunctionImpl;
+import nc.deveo.pacific_athlete.function.inputRequest.CreateWorkoutInputRequest;
 import nc.deveo.pacific_athlete.function.inputRequest.CreateExerciceInputRequest;
-import nc.deveo.pacific_athlete.function.inputRequest.CreateMouvementInputRequest;
-import nc.deveo.pacific_athlete.function.inputRequest.GetListMouvementInputRequest;
+import nc.deveo.pacific_athlete.function.inputRequest.GetListExerciceInputRequest;
 import org.springframework.ai.model.function.FunctionCallback;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,34 +17,34 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class ConfigurationFunctions {
 
+    private final CreateWorkoutFunctionImpl createWorkoutFunction;
     private final CreateExerciceFunctionImpl createExerciceFunction;
-    private final CreateMouvementFunctionImpl createMouvementFunction;
-    private final GetListMouvementFunctionImpl getListMouvementFunction;
+    private final GetListExerciceFunctionImpl getListExerciceFunction;
+
+    @Bean
+    public FunctionCallback createWorkoutFunction() {
+        return FunctionCallback.builder()
+                .function("createWorkout", createWorkoutFunction)
+                .inputType(CreateWorkoutInputRequest.class)
+                .description("Create an workout")
+                .build();
+    }
 
     @Bean
     public FunctionCallback createExerciceFunction() {
         return FunctionCallback.builder()
                 .function("createExercice", createExerciceFunction)
                 .inputType(CreateExerciceInputRequest.class)
-                .description("Create an exercice")
+                .description("This function helps you create an exercise.")
                 .build();
     }
 
     @Bean
-    public FunctionCallback createMouvementFunction() {
+    public FunctionCallback getListExerciceFunction() {
         return FunctionCallback.builder()
-                .function("createMouvement", createMouvementFunction)
-                .inputType(CreateMouvementInputRequest.class)
-                .description("This function helps you create a mouvement.")
-                .build();
-    }
-
-    @Bean
-    public FunctionCallback getListMouvementFunction() {
-        return FunctionCallback.builder()
-                .function("getListMouvement", getListMouvementFunction)
-                .description("This function helps you get the list of mouvement.")
-                .inputType(GetListMouvementInputRequest.class)
+                .function("getListExercice", getListExerciceFunction)
+                .description("This function helps you get the list of exercise.")
+                .inputType(GetListExerciceInputRequest.class)
                 .build();
     }
 }

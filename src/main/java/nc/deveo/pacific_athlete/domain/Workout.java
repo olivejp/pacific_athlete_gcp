@@ -3,6 +3,10 @@ package nc.deveo.pacific_athlete.domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -10,19 +14,30 @@ import lombok.Setter;
 @Table(name = "workout")
 public class Workout extends AbstractDomain {
 
-    @Column(name = "type", length = Integer.MAX_VALUE)
-    private String type;
+    @Column(name = "date_execution")
+    private Instant dateExecution;
 
-    @Column(name = "seance_id")
-    private Long seanceId;
+    @Column(name = "description", length = Integer.MAX_VALUE)
+    private String description;
 
-    @Column(name = "ordre")
-    private Short ordre;
+    @Column(name = "image_url", length = Integer.MAX_VALUE)
+    private String imageUrl;
+
+    @Column(name = "timer_type", length = Integer.MAX_VALUE)
+    private String timerType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "exercice_id", referencedColumnName = "id", updatable = false, insertable = false),
-    })
-    private Exercice exercice;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "utilisateur_id")
+    private Utilisateur utilisateur;
+
+    @Column(name = "total_time")
+    private Long totalTime;
+
+    @Column(name = "type_workout", length = Integer.MAX_VALUE)
+    private String typeWorkout;
+
+    @Column(name = "uid", length = Integer.MAX_VALUE)
+    private String uid;
 
 }

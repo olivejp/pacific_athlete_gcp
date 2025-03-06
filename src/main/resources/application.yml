@@ -4,7 +4,7 @@ spring:
       project-id: fitness-449702
   ai:
     openai:
-      api-key: ${OPEN_API_KEY}
+      api-key: ${OPENAI_API_KEY}
   application:
     name: ollama_instance
   jpa:
@@ -18,7 +18,7 @@ spring:
   datasource:
     url: jdbc:postgresql://aws-0-ap-southeast-2.pooler.supabase.com:5432/postgres?autoReconnect=true # ${DATABASE_URL}
     username: ${DATABASE_USER}
-    password: ${DATABASE_PASSWORD}}
+    password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
