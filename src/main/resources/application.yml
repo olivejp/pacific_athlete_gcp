@@ -34,10 +34,7 @@ springdoc:
 ollama:
   cors:
     allowed-origins:
-      - 'http://localhost:4200'
-      - 'https://ff-debug-service-frontend-pro-ygxkweukma-uc.a.run.app'
-      - 'https://fitness-7xtmfo-qualification.flutterflow.app'
-      - 'http://fitness-449702.ts.r.appspot.com'
+      - '*'
     allowed-methods:
       - '*'
     allowed-headers:
