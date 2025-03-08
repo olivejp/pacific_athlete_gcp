@@ -39,4 +39,13 @@ public class WorkoutSet extends AbstractDomain {
     @Column(name = "workout_uid", length = Integer.MAX_VALUE)
     private String workoutUid;
 
+    @Column(name = "weight_unit", length = Integer.MAX_VALUE)
+    private String weightUnit;
+
+    @Column(name = "distance_unit", length = Integer.MAX_VALUE)
+    private String distanceUnit;
+
+    @Column(name = "time_unit", length = Integer.MAX_VALUE)
+    private String timeUnit;
+
 }

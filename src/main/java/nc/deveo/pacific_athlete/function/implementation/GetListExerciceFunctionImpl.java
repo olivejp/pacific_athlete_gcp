@@ -17,7 +17,6 @@ public class GetListExerciceFunctionImpl implements Function<GetListExerciceInpu
 
     @Override
     public List<ExerciceDto> apply(GetListExerciceInputRequest page) {
-        final Long utilisateurId = 2L;
-        return exerciceService.getListExercice(utilisateurId);
+        return exerciceService.getListExercice();
     }
 }

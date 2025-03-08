@@ -40,9 +40,6 @@ public class WorkoutSetLine extends AbstractDomain {
     @Column(name = "rest_time")
     private Long restTime;
 
-    @Column(name = "rest_time_unit", length = Integer.MAX_VALUE)
-    private String restTimeUnit;
-
     @Column(name = "\"order\"")
     private Long order;
 

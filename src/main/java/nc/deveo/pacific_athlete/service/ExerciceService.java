@@ -20,10 +20,9 @@ public class ExerciceService {
     private final ExerciceRepository repository;
     private final ExerciceMapper mapper;
 
-    public List<ExerciceDto> getListExercice(Long utilisateurId) {
-        log.info("getListMouvement: {}", utilisateurId);
-        utilisateurId = 2L; // TODO remplacer cette assignation par une recherche dans un repository.
-        return repository.findAllByUtilisateurId(utilisateurId).stream().map(mapper::toDto).toList();
+    public List<ExerciceDto> getListExercice() {
+        log.info("getListMouvement");
+        return repository.findAll().stream().map(mapper::toDto).toList();
     }
 
     @Transactional
