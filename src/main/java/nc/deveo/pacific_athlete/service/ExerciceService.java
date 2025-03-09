@@ -8,8 +8,6 @@ import nc.deveo.pacific_athlete.domain.Utilisateur;
 import nc.deveo.pacific_athlete.mapper.ExerciceMapper;
 import nc.deveo.pacific_athlete.repository.ExerciceRepository;
 import nc.deveo.pacific_athlete.service.dto.ExerciceDto;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -30,9 +28,8 @@ public class ExerciceService {
         log.info("ExerciceService.getListExercice");
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userUid = userDetails.getUsername();
-        Utilisateur utilisateur = utilisateurService.getUtilisateurByUid(userUid);
 
-        return repository.findAllByUtilisateurId(utilisateur.getId()).stream().map(mapper::toDto).toList();
+        return repository.findByOrigineOrUtilisateurUid(userUid).stream().map(mapper::toDto).toList();
     }
 
     @Transactional
