@@ -10,6 +10,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @Configuration
 public class WebConfiguration {
 
+
     @Bean
     @Primary
     public CorsConfigurationSource corsConfigurationSource(final OllamaProperties properties) {

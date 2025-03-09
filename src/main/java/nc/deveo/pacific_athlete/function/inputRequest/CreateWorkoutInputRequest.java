@@ -7,4 +7,5 @@ import java.util.List;
 @Data
 public class CreateWorkoutInputRequest {
     List<Long> exercicesId;
+    String description;
 }

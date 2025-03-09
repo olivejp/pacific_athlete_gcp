@@ -33,6 +33,7 @@ springdoc:
     path: /api-docs
   swagger-ui.path: /swagger-ui.html
 ollama:
+  secret: ${SECRET_SUPABASE}
   cors:
     allowed-origins:
       - '*'

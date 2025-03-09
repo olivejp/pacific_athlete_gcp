@@ -42,15 +42,20 @@ public class WorkoutService {
         workout.setUid(UUID.randomUUID().toString());
         workout.setUtilisateur(utilisateur);
         workout.setDateExecution(LocalDate.now());
+        workout.setDescription(inputRequest.getDescription());
         workoutRepository.save(workout);
 
         List<Exercice> exercices = exerciceRepository.findAllById(inputRequest.getExercicesId());
-        exercices.forEach(exercice -> {
+        Long order = 1L;
+        for (Exercice exercice : exercices) {
             WorkoutSet workoutSet = new WorkoutSet();
+            workoutSet.setUid(UUID.randomUUID().toString());
+            workoutSet.setOrder(order);
             workoutSet.setExercice(exercice);
             workoutSet.setWorkout(workout);
             workoutSetRepository.save(workoutSet);
-        });
+            order++;
+        }
 
         return workoutMapper.toDto(workout);
     }
