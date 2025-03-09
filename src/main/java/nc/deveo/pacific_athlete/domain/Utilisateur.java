@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Getter
 @Setter
@@ -40,4 +41,20 @@ public class Utilisateur {
 
     @Column(name = "photo_url")
     private String photoUrl;
+
+    @Column(name = "sexe", length = Integer.MAX_VALUE)
+    private String sexe;
+
+    @Column(name = "uid", length = Integer.MAX_VALUE)
+    private String uid;
+
+    @Column(name = "updated_at")
+    private OffsetDateTime updatedAt;
+
+    @Column(name = "deleted_at")
+    private OffsetDateTime deletedAt;
+
+    @Column(name = "photo_storage_url", length = Integer.MAX_VALUE)
+    private String photoStorageUrl;
+
 }

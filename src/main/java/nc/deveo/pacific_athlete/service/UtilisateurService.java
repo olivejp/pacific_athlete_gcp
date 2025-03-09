@@ -19,4 +19,8 @@ public class UtilisateurService {
     public Utilisateur getUtilisateurByEmail(String email) {
         return utilisateurRepository.findByEmail(email).orElse(null);
     }
+
+    public Utilisateur getUtilisateurByUid(String userUid) {
+        return utilisateurRepository.findByUid(userUid).orElse(null);
+    }
 }
