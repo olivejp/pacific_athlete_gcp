@@ -1,7 +1,7 @@
 #bin!/bin/bash
 
 ## Upgrade de la version
-sh ./upgrade_gcp_version
+sh gcp-upgrade-version.sh
 
 ## Récupération de la version dans une variable
 VERSION_FILE="gcp-version.txt"
