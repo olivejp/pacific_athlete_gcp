@@ -12,6 +12,7 @@ public class ExerciceDto {
     private String description;
     private String type;
     private String imageUrl;
+    private String photoStorageUrl;
     private List<String> groupe;
     private LocalDateTime createdAt;
     private String origine;

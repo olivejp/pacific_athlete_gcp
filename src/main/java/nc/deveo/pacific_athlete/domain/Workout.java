@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -15,7 +15,7 @@ import java.time.Instant;
 public class Workout extends AbstractDomain {
 
     @Column(name = "date_execution")
-    private Instant dateExecution;
+    private LocalDate dateExecution;
 
     @Column(name = "description", length = Integer.MAX_VALUE)
     private String description;

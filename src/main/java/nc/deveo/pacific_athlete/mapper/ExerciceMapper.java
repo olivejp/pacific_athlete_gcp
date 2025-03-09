@@ -17,6 +17,7 @@ public interface ExerciceMapper {
             @Mapping(target = "imageUrl", source = "imageUrl"),
             @Mapping(target = "groupe", source = "groupe"),
             @Mapping(target = "origine", source = "origine"),
+            @Mapping(target = "photoStorageUrl", source = "photoStorageUrl"),
     })
     ExerciceDto toDto(Exercice exercice);
 }

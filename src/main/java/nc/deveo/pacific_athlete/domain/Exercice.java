@@ -50,4 +50,8 @@ public class Exercice extends AbstractDomain {
             @JoinColumn(name = "utilisateur_id", referencedColumnName = "id", updatable = false, insertable = false),
     })
     private Utilisateur utilisateur;
+
+    @Column(name = "photo_storage_url", length = Integer.MAX_VALUE)
+    private String photoStorageUrl;
+
 }
