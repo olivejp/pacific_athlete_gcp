@@ -1,5 +1,6 @@
 package nc.deveo.pacific_athlete.service;
 
+import jakarta.transaction.TransactionScoped;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import nc.deveo.pacific_athlete.domain.Exercice;
@@ -16,6 +17,7 @@ import nc.deveo.pacific_athlete.service.dto.WorkoutDto;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,6 +26,7 @@ import java.util.UUID;
 @Log4j2
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class WorkoutService {
     private final WorkoutRepository workoutRepository;
     private final WorkoutSetRepository workoutSetRepository;
@@ -52,7 +55,9 @@ public class WorkoutService {
             workoutSet.setUid(UUID.randomUUID().toString());
             workoutSet.setOrder(order);
             workoutSet.setExercice(exercice);
+            workoutSet.setExerciceUid(exercice.getUid());
             workoutSet.setWorkout(workout);
+            workoutSet.setWorkoutUid(workout.getUid());
             workoutSetRepository.save(workoutSet);
             order++;
         }
