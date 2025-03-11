@@ -8,6 +8,7 @@ import nc.deveo.pacific_athlete.domain.Utilisateur;
 import nc.deveo.pacific_athlete.domain.Workout;
 import nc.deveo.pacific_athlete.domain.WorkoutSet;
 import nc.deveo.pacific_athlete.function.inputRequest.CreateWorkoutInputRequest;
+import nc.deveo.pacific_athlete.function.inputRequest.GetWorkoutInputRequest;
 import nc.deveo.pacific_athlete.mapper.WorkoutMapper;
 import nc.deveo.pacific_athlete.repository.ExerciceRepository;
 import nc.deveo.pacific_athlete.repository.UtilisateurRepository;
@@ -63,5 +64,15 @@ public class WorkoutService {
         }
 
         return workoutMapper.toDto(workout);
+    }
+
+    public List<WorkoutDto> getWorkout(GetWorkoutInputRequest inputRequest) {
+        log.info("Getting workout {}", inputRequest);
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String userUid = userDetails.getUsername();
+
+        Utilisateur utilisateur = utilisateurRepository.findByUid(userUid).orElseThrow(() -> new RuntimeException("User not found"));
+
+        return workoutMapper.toDtos(workoutRepository.findAllByUtilisateur_Id(utilisateur.getId()));
     }
 }

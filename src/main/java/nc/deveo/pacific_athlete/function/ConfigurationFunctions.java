@@ -5,9 +5,11 @@ import lombok.extern.log4j.Log4j2;
 import nc.deveo.pacific_athlete.function.implementation.CreateWorkoutFunctionImpl;
 import nc.deveo.pacific_athlete.function.implementation.CreateExerciceFunctionImpl;
 import nc.deveo.pacific_athlete.function.implementation.GetListExerciceFunctionImpl;
+import nc.deveo.pacific_athlete.function.implementation.GetWorkoutFunctionImpl;
 import nc.deveo.pacific_athlete.function.inputRequest.CreateWorkoutInputRequest;
 import nc.deveo.pacific_athlete.function.inputRequest.CreateExerciceInputRequest;
 import nc.deveo.pacific_athlete.function.inputRequest.GetListExerciceInputRequest;
+import nc.deveo.pacific_athlete.function.inputRequest.GetWorkoutInputRequest;
 import org.springframework.ai.model.function.FunctionCallback;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +20,7 @@ import org.springframework.context.annotation.Configuration;
 public class ConfigurationFunctions {
 
     private final CreateWorkoutFunctionImpl createWorkoutFunction;
+    private final GetWorkoutFunctionImpl getWorkoutFunction;
     private final CreateExerciceFunctionImpl createExerciceFunction;
     private final GetListExerciceFunctionImpl getListExerciceFunction;
 
@@ -27,6 +30,15 @@ public class ConfigurationFunctions {
                 .function("createWorkout", createWorkoutFunction)
                 .inputType(CreateWorkoutInputRequest.class)
                 .description("Create an workout")
+                .build();
+    }
+
+    @Bean
+    public FunctionCallback getWorkoutFunction() {
+        return FunctionCallback.builder()
+                .function("getWorkout", getWorkoutFunction)
+                .inputType(GetWorkoutInputRequest.class)
+                .description("Get a list of workout")
                 .build();
     }
 
