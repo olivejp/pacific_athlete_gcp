@@ -25,7 +25,8 @@ spring:
       poolName: Hikari
       auto-commit: true
       connection-timeout: 600000
-      maximum-pool-size: 1
+      idle-timeout: 600000
+      maximum-pool-size: 10
       max-lifetime: 1800000
       leak-detection-threshold: 30000
 springdoc:

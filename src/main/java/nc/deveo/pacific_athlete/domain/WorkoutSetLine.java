@@ -51,7 +51,7 @@ public class WorkoutSetLine extends AbstractDomain {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "workout_set_id")
+    @JoinColumn(name = "workout_set_id", referencedColumnName = "id", nullable = false)
     private WorkoutSet workoutSet;
 
 }

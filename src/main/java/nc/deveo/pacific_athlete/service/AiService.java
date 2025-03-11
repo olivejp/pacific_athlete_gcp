@@ -1,6 +1,5 @@
 package nc.deveo.pacific_athlete.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.lang.Collections;
 import nc.deveo.pacific_athlete.domain.Parametre;
 import nc.deveo.pacific_athlete.repository.ParametreRepository;
@@ -16,17 +15,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class AiService {
     private final ChatClient chatClient;
     private final ParametreRepository parametreRepository;
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public AiService(ChatClient.Builder chatClientBuilder, ParametreRepository parametreRepository) {
         this.chatClient = chatClientBuilder.build();
         this.parametreRepository = parametreRepository;
     }
-
 
     private static AiResponseDto createAiResponseDtoFromException(Exception e) {
         AiResponseDto response = new AiResponseDto();
@@ -61,15 +57,14 @@ public class AiService {
      * @param request the input prompt to be sent to the AI
      * @return an {@link AiResponseDto} containing the AI's response
      */
+    @Transactional(readOnly = true)
     public AiResponseDto getPrompt(String request) {
         try {
-            String aiResponse = this.chatClient.prompt()
+            return this.chatClient.prompt()
                     .user(getPromptFromDb(request))
                     .options(getOpenAiChatOptions())
                     .call()
-                    .content();
-
-            return objectMapper.readValue(aiResponse, AiResponseDto.class);
+                    .entity(AiResponseDto.class);
         } catch (Exception e) {
             return createAiResponseDtoFromException(e);
         }

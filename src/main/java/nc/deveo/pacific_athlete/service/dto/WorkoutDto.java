@@ -18,4 +18,5 @@ public class WorkoutDto {
     private Long totalTime;
     private String typeWorkout;
     private String uid;
+    private List<WorkoutSetDto> sets;
 }
