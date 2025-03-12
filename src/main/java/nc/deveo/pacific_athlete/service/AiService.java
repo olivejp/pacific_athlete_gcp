@@ -46,7 +46,7 @@ public class AiService {
 
         return OpenAiChatOptions.builder()
                 .responseFormat(responseFormat)
-                .functions(Collections.setOf("createWorkout", "createExercice", "getListExercice", "getWorkout"))
+                .functions(Collections.setOf("createWorkout", "getListExercice", "getWorkout"))
                 .build();
     }
 

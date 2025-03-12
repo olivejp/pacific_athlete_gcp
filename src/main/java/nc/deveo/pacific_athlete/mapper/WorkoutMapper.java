@@ -12,13 +12,9 @@ import java.util.List;
 public interface WorkoutMapper {
     @Mappings({
             @Mapping(target = "id", source = "id"),
-            @Mapping(target = "createdAt", source = "createdAt"),
-            @Mapping(target = "updatedAt", source = "updatedAt"),
             @Mapping(target = "dateExecution", source = "dateExecution"),
             @Mapping(target = "description", source = "description"),
-            @Mapping(target = "imageUrl", source = "imageUrl"),
             @Mapping(target = "timerType", source = "timerType"),
-            @Mapping(target = "totalTime", source = "totalTime"),
             @Mapping(target = "typeWorkout", source = "typeWorkout"),
             @Mapping(target = "uid", source = "uid"),
             @Mapping(target = "sets", source = ".", qualifiedByName = "getWorkoutSets"),

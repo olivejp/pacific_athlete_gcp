@@ -11,9 +11,6 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {WorkoutSetUtilsMapper.class})
 public interface WorkoutSetMapper {
     @Mappings({
-            @Mapping(target = "id", source = "id"),
-            @Mapping(target = "createdAt", source = "createdAt"),
-            @Mapping(target = "updatedAt", source = "updatedAt"),
             @Mapping(target = "commentaire", source = "commentaire"),
             @Mapping(target = "order", source = "order"),
             @Mapping(target = "exerciceUid", source = "exerciceUid"),

@@ -15,12 +15,12 @@ import java.util.function.Function;
 
 @Component
 @RequiredArgsConstructor
-public class GetListExerciceFunctionImpl implements Function<GetListExerciceInputRequest, List<ExerciceDto>> {
+public class GetListExerciceFunctionImpl implements Function<GetListExerciceInputRequest, String> {
 
     private final ExerciceService exerciceService;
 
     @Override
-    public List<ExerciceDto> apply(GetListExerciceInputRequest page) {
+    public String apply(GetListExerciceInputRequest page) {
         return exerciceService.getListExercice();
     }
 }

@@ -11,10 +11,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface WorkoutSetLineMapper {
     @Mappings({
-            @Mapping(target = "uid", source = "uid"),
-            @Mapping(target = "id", source = "id"),
-            @Mapping(target = "createdAt", source = "createdAt"),
-            @Mapping(target = "updatedAt", source = "updatedAt"),
             @Mapping(target = "checked", source = "checked"),
             @Mapping(target = "distance", source = "distance"),
             @Mapping(target = "distanceUnit", source = "distanceUnit"),
@@ -25,7 +21,6 @@ public interface WorkoutSetLineMapper {
             @Mapping(target = "weightUnit", source = "weightUnit"),
             @Mapping(target = "restTime", source = "restTime"),
             @Mapping(target = "order", source = "order"),
-            @Mapping(target = "workoutSetUid", source = "workoutSetUid"),
     })
     WorkoutSetLineDto toDto(WorkoutSetLine line);
 

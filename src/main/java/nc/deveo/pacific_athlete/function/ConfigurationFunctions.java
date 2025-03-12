@@ -3,11 +3,9 @@ package nc.deveo.pacific_athlete.function;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import nc.deveo.pacific_athlete.function.implementation.CreateWorkoutFunctionImpl;
-import nc.deveo.pacific_athlete.function.implementation.CreateExerciceFunctionImpl;
 import nc.deveo.pacific_athlete.function.implementation.GetListExerciceFunctionImpl;
 import nc.deveo.pacific_athlete.function.implementation.GetWorkoutFunctionImpl;
 import nc.deveo.pacific_athlete.function.inputRequest.CreateWorkoutInputRequest;
-import nc.deveo.pacific_athlete.function.inputRequest.CreateExerciceInputRequest;
 import nc.deveo.pacific_athlete.function.inputRequest.GetListExerciceInputRequest;
 import nc.deveo.pacific_athlete.function.inputRequest.GetWorkoutInputRequest;
 import org.springframework.ai.model.function.FunctionCallback;
@@ -21,7 +19,6 @@ public class ConfigurationFunctions {
 
     private final CreateWorkoutFunctionImpl createWorkoutFunction;
     private final GetWorkoutFunctionImpl getWorkoutFunction;
-    private final CreateExerciceFunctionImpl createExerciceFunction;
     private final GetListExerciceFunctionImpl getListExerciceFunction;
 
     @Bean
@@ -29,7 +26,7 @@ public class ConfigurationFunctions {
         return FunctionCallback.builder()
                 .function("createWorkout", createWorkoutFunction)
                 .inputType(CreateWorkoutInputRequest.class)
-                .description("Create an workout")
+                .description("Create an workout // Créer une séance d'entraînement")
                 .build();
     }
 
@@ -38,16 +35,7 @@ public class ConfigurationFunctions {
         return FunctionCallback.builder()
                 .function("getWorkout", getWorkoutFunction)
                 .inputType(GetWorkoutInputRequest.class)
-                .description("Get a list of workout")
-                .build();
-    }
-
-    @Bean
-    public FunctionCallback createExerciceFunction() {
-        return FunctionCallback.builder()
-                .function("createExercice", createExerciceFunction)
-                .inputType(CreateExerciceInputRequest.class)
-                .description("This function helps you create an exercise.")
+                .description("Get a list of workout // Donne la liste des séances d'entraînement")
                 .build();
     }
 
@@ -55,7 +43,7 @@ public class ConfigurationFunctions {
     public FunctionCallback getListExerciceFunction() {
         return FunctionCallback.builder()
                 .function("getListExercice", getListExerciceFunction)
-                .description("This function helps you get the list of exercise.")
+                .description("Get the list of exercise and their details // Donne la liste des exercices et leurs détails")
                 .inputType(GetListExerciceInputRequest.class)
                 .build();
     }
