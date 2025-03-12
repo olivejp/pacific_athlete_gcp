@@ -8,7 +8,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {WorkoutSetMapper.class})
+@Mapper(componentModel = "spring", uses = {WorkoutUtilsMapper.class})
 public interface WorkoutMapper {
     @Mappings({
             @Mapping(target = "id", source = "id"),
@@ -21,7 +21,7 @@ public interface WorkoutMapper {
             @Mapping(target = "totalTime", source = "totalTime"),
             @Mapping(target = "typeWorkout", source = "typeWorkout"),
             @Mapping(target = "uid", source = "uid"),
-            @Mapping(target = "sets", source = "sets"),
+            @Mapping(target = "sets", source = ".", qualifiedByName = "getWorkoutSets"),
     })
     WorkoutDto toDto(Workout workout);
 

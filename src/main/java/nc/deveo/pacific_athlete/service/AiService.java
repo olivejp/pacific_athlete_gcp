@@ -10,7 +10,6 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.ResponseFormat;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -57,7 +56,6 @@ public class AiService {
      * @param request the input prompt to be sent to the AI
      * @return an {@link AiResponseDto} containing the AI's response
      */
-    @Transactional(readOnly = true)
     public AiResponseDto getPrompt(String request) {
         try {
             return this.chatClient.prompt()

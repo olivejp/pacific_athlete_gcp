@@ -1,8 +1,6 @@
 package nc.deveo.pacific_athlete.mapper;
 
-import nc.deveo.pacific_athlete.domain.WorkoutSet;
 import nc.deveo.pacific_athlete.domain.WorkoutSetLine;
-import nc.deveo.pacific_athlete.service.dto.WorkoutSetDto;
 import nc.deveo.pacific_athlete.service.dto.WorkoutSetLineDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -10,7 +8,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {WorkoutSetLineMapper.class})
+@Mapper(componentModel = "spring")
 public interface WorkoutSetLineMapper {
     @Mappings({
             @Mapping(target = "uid", source = "uid"),

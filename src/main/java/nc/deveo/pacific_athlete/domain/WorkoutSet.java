@@ -1,14 +1,11 @@
 package nc.deveo.pacific_athlete.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
-import java.util.Set;
 
 @Getter
 @Setter
@@ -50,8 +47,4 @@ public class WorkoutSet extends AbstractDomain {
 
     @Column(name = "time_unit", length = Integer.MAX_VALUE)
     private String timeUnit;
-
-    @OneToMany(mappedBy = "workoutSet", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("workoutSet")
-    private Set<WorkoutSetLine> lines;
 }
