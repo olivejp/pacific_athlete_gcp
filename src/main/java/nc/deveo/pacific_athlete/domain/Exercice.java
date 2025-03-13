@@ -1,6 +1,8 @@
 package nc.deveo.pacific_athlete.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -20,23 +22,11 @@ public class Exercice extends AbstractDomain {
     @Column(name = "description", length = Integer.MAX_VALUE)
     private String description;
 
-    @Column(name = "video_url", length = Integer.MAX_VALUE)
-    private String videoUrl;
-
-    @Column(name = "youtube_url", length = Integer.MAX_VALUE)
-    private String youtubeUrl;
-
-    @Column(name = "image_url", length = Integer.MAX_VALUE)
-    private String imageUrl;
-
     @Column(name = "origine", length = Integer.MAX_VALUE)
     private String origine;
 
     @Column(name = "type", length = Integer.MAX_VALUE)
     private String type;
-
-    @Column(name = "utilisateur_id")
-    private Long utilisateurId;
 
     @Column(name = "uid", length = Integer.MAX_VALUE)
     private String uid;
@@ -44,12 +34,6 @@ public class Exercice extends AbstractDomain {
     @JdbcTypeCode(SqlTypes.ARRAY)
     @Column(name = "groupe", columnDefinition = "TEXT[]")
     private List<String> groupe;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "utilisateur_id", referencedColumnName = "id", updatable = false, insertable = false),
-    })
-    private Utilisateur utilisateur;
 
     @Column(name = "photo_storage_url", length = Integer.MAX_VALUE)
     private String photoStorageUrl;

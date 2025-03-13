@@ -14,7 +14,6 @@ public interface ExerciceMapper {
             @Mapping(target = "description", source = "description"),
             @Mapping(target = "type", source = "type"),
             @Mapping(target = "createdAt", source = "createdAt"),
-            @Mapping(target = "imageUrl", source = "imageUrl"),
             @Mapping(target = "groupe", source = "groupe"),
             @Mapping(target = "origine", source = "origine"),
             @Mapping(target = "photoStorageUrl", source = "photoStorageUrl"),

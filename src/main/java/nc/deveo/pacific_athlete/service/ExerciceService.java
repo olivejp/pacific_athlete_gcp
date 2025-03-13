@@ -6,8 +6,6 @@ import lombok.extern.log4j.Log4j2;
 import nc.deveo.pacific_athlete.mapper.ExerciceMapper;
 import nc.deveo.pacific_athlete.repository.ExerciceRepository;
 import nc.deveo.pacific_athlete.service.dto.ExerciceDto;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,10 +21,7 @@ public class ExerciceService {
 
     public String getListExercice() {
         log.info("ExerciceService.getListExercice");
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String userUid = userDetails.getUsername();
-
-        List<ExerciceDto> list = repository.findByOrigineOrUtilisateurUid(userUid).stream().map(mapper::toDto).toList();
+        List<ExerciceDto> list = repository.findAll().stream().map(mapper::toDto).toList();
         try {
             String exerciceListAsString = objectMapper.writeValueAsString(list);
             log.info("ExerciceService.getListExercice: {}", exerciceListAsString);
