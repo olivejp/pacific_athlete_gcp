@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -39,5 +40,8 @@ public class Workout extends AbstractDomain {
 
     @Column(name = "uid", length = Integer.MAX_VALUE)
     private String uid;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 
 }

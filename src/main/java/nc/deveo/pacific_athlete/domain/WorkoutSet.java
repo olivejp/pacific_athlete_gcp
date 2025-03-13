@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -47,4 +49,7 @@ public class WorkoutSet extends AbstractDomain {
 
     @Column(name = "time_unit", length = Integer.MAX_VALUE)
     private String timeUnit;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 }

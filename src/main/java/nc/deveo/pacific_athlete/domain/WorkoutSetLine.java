@@ -6,12 +6,13 @@ import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
 @Table(name = "workout_set_line")
 public class WorkoutSetLine extends AbstractDomain {
-
 
     @Column(name = "checked")
     private Boolean checked;
@@ -53,5 +54,8 @@ public class WorkoutSetLine extends AbstractDomain {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "workout_set_id", referencedColumnName = "id", nullable = false)
     private WorkoutSet workoutSet;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 
 }
