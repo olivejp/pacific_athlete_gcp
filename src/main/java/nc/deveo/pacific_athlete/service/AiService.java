@@ -1,6 +1,7 @@
 package nc.deveo.pacific_athlete.service;
 
 import io.jsonwebtoken.lang.Collections;
+import lombok.extern.slf4j.Slf4j;
 import nc.deveo.pacific_athlete.domain.Parametre;
 import nc.deveo.pacific_athlete.repository.ParametreRepository;
 import nc.deveo.pacific_athlete.service.dto.AiResponseDto;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class AiService {
     private final ChatClient chatClient;
@@ -64,6 +66,7 @@ public class AiService {
                     .call()
                     .entity(AiResponseDto.class);
         } catch (Exception e) {
+            log.error(e.getMessage());
             return createAiResponseDtoFromException(e);
         }
     }

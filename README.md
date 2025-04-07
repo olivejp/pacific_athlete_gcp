@@ -26,3 +26,17 @@ While most of the inheritance is fine, it also inherits unwanted elements like `
 To prevent this, the project POM contains empty overrides for these elements.
 If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
 
+Pour voir la liste des projets
+```bash
+gcloud projects list
+```
+
+Pour changer de projet actif
+```bash
+gcloud config set project <PROJECT_ID>
+```
+
+Pour voir les logs
+```bash
+gcloud app logs tail -s default
+```
